@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import { createContext } from 'react';
+import CompA from './components/CompA';
+import Task2Parent from './Task2Parent';
+import TextUtility from './TextUtility';
+import Currency from './Currency';
+import NumToWord from './NumToWord';
+
+// creating context to be used in child component D 
+
+const userName = createContext();
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      {/* providing value to a context name userName  */}
+
+      <userName.Provider value={"YashMaurya"}>
+
+        <CompA />
+
+      {/* task two parent component that re renders name after every two seconds  */}
+
+        <Task2Parent />
+
+        <TextUtility />
+
+        <Currency />
+
+        <NumToWord />
+
+      </userName.Provider>
+      
     </div>
   );
 }
 
 export default App;
+export {userName};
